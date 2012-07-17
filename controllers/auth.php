@@ -52,8 +52,8 @@ class Auth extends CI_Controller {
 		$this->data['title'] = "Login";
 
 		//validate form input
-		$this->form_validation->set_rules('identity', 'Identity', 'required');
-		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('identity', $this->lang->line('text_identity'), 'required');
+		$this->form_validation->set_rules('password', $this->lang->line('text_password'), 'required');
 
 		if ($this->form_validation->run() == true)
 		{ //check to see if the user is logging in
@@ -107,9 +107,9 @@ class Auth extends CI_Controller {
 	//change password
 	function change_password()
 	{
-		$this->form_validation->set_rules('old', 'Old password', 'required');
-		$this->form_validation->set_rules('new', 'New Password', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
-		$this->form_validation->set_rules('new_confirm', 'Confirm New Password', 'required');
+		$this->form_validation->set_rules('old', $this->lang->line('text_password_old'), 'required');
+		$this->form_validation->set_rules('new',  $this->lang->line('text_password_new'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
+		$this->form_validation->set_rules('new_confirm', $this->lang->line('text_password_new_confirm'), 'required');
 
 		if (!$this->ion_auth->logged_in())
 		{
@@ -173,7 +173,7 @@ class Auth extends CI_Controller {
 	//forgot password
 	function forgot_password()
 	{
-		$this->form_validation->set_rules('email', 'Email Address', 'required');
+		$this->form_validation->set_rules('email', $this->lang->line('text_email'), 'required');
 		if ($this->form_validation->run() == false)
 		{
 			//setup the input
@@ -313,8 +313,8 @@ class Auth extends CI_Controller {
 		$id = $this->config->item('use_mongodb', 'ion_auth') ? (string) $id : (int) $id;
 
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('confirm', 'confirmation', 'required');
-		$this->form_validation->set_rules('id', 'user ID', 'required|alpha_numeric');
+		$this->form_validation->set_rules('confirm', $this->lang->line('text_confirmation'), 'required');
+		$this->form_validation->set_rules('id', $this->lang->line('text_user_id'), 'required|alpha_numeric');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -358,15 +358,15 @@ class Auth extends CI_Controller {
 		}
 
 		//validate form input
-		$this->form_validation->set_rules('first_name', 'First Name', 'required|xss_clean');
-		$this->form_validation->set_rules('last_name', 'Last Name', 'required|xss_clean');
-		$this->form_validation->set_rules('email', 'Email Address', 'required|valid_email');
-		$this->form_validation->set_rules('phone1', 'First Part of Phone', 'required|xss_clean|min_length[3]|max_length[3]');
-		$this->form_validation->set_rules('phone2', 'Second Part of Phone', 'required|xss_clean|min_length[3]|max_length[3]');
-		$this->form_validation->set_rules('phone3', 'Third Part of Phone', 'required|xss_clean|min_length[4]|max_length[4]');
-		$this->form_validation->set_rules('company', 'Company Name', 'required|xss_clean');
-		$this->form_validation->set_rules('password', 'Password', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
-		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required');
+		$this->form_validation->set_rules('first_name', $this->lang->line('text_first_name'), 'required|xss_clean');
+		$this->form_validation->set_rules('last_name', $this->lang->line('text_last_name'), 'required|xss_clean');
+		$this->form_validation->set_rules('email', $this->lang->line('text_email'), 'required|valid_email');
+		$this->form_validation->set_rules('phone1', $this->lang->line('text_phone_part1'), 'required|xss_clean|min_length[3]|max_length[3]');
+		$this->form_validation->set_rules('phone2', $this->lang->line('text_phone_part2'), 'required|xss_clean|min_length[3]|max_length[3]');
+		$this->form_validation->set_rules('phone3', $this->lang->line('text_phone_part3'), 'required|xss_clean|min_length[4]|max_length[4]');
+		$this->form_validation->set_rules('company', $this->lang->line('text_company_name'), 'required|xss_clean');
+		$this->form_validation->set_rules('password', $this->lang->line('text_password'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+		$this->form_validation->set_rules('password_confirm', $this->lang->line('text_password_confirm'), 'required');
 
 		if ($this->form_validation->run() == true)
 		{
@@ -383,7 +383,7 @@ class Auth extends CI_Controller {
 		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
 		{ //check to see if we are creating the user
 			//redirect them back to the admin page
-			$this->session->set_flashdata('message', "User Created");
+			$this->session->set_flashdata('message', $this->lang->line('msg_user_created'));
 			redirect("auth", 'refresh');
 		}
 		else
