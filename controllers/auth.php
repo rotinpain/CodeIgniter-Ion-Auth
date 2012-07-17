@@ -95,7 +95,7 @@ class Auth extends CI_Controller {
 	//log the user out
 	function logout()
 	{
-		$this->data['title'] = "Logout";
+		$this->data['title'] = $this->lang->line('title_logout');
 
 		//log the user out
 		$logout = $this->ion_auth->logout();
@@ -350,7 +350,7 @@ class Auth extends CI_Controller {
 	//create a new user
 	function create_user()
 	{
-		$this->data['title'] = "Create User";
+		$this->data['title'] = $this->lang->line('title_create_user');
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
