@@ -70,3 +70,4 @@ $lang['text_company_name']               = 'Company Name';
 $lang['text_password_confirm']           = 'Password Confirmation';
 
 $lang['msg_user_created']           = 'User Created';
+$lang['title_login']           = 'Login';
