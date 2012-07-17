@@ -50,3 +50,23 @@ $lang['delete_unsuccessful'] 		 	     = 'Unable to Delete User';
 $lang['email_forgotten_password_subject']    = 'Forgotten Password Verification';
 $lang['email_new_password_subject']          = 'New Password';
 $lang['email_activation_subject']            = 'Account Activation';
+
+// Form fields and other texts
+$lang['text_identity']                       = 'Identity';
+$lang['text_password']                       = 'Password';
+$lang['text_password_old']                   = 'Old password';
+$lang['text_password_new']                   = 'New password';
+$lang['text_password_new_confirm']           = 'Confirm the new password';
+$lang['text_email']               = 'Email Address';
+$lang['text_confirmation']               = 'confirmation';
+$lang['text_user_id']               = 'user ID';
+
+$lang['text_first_name']               = 'First Name';
+$lang['text_last_name']               = 'Last Name';
+$lang['text_phone_part1']               = 'First Part of Phone';
+$lang['text_phone_part2']               = 'Second Part of Phone';
+$lang['text_phone_part3']               = 'Third Part of Phone';
+$lang['text_company_name']               = 'Company Name';
+$lang['text_password_confirm']           = 'Password Confirmation';
+
+$lang['msg_user_created']           = 'User Created';
