@@ -49,7 +49,7 @@ class Auth extends CI_Controller {
 	//log the user in
 	function login()
 	{
-		$this->data['title'] = "Login";
+		$this->data['title'] = $this->lang->line('title_login');
 
 		//validate form input
 		$this->form_validation->set_rules('identity', $this->lang->line('text_identity'), 'required');
